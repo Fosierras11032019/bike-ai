@@ -1,0 +1,26 @@
+/* ================================
+   Identidad de la tienda
+================================ */
+
+.sidebar-header {
+    font-family: "Arial Black", Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: #0D3B66;
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.sidebar-subtitle {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #3A86FF;
+    margin-bottom: 16px;
+}
+
+.sidebar-divider {
+    margin: 8px 0 12px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}

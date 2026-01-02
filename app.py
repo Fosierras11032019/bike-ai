@@ -18,6 +18,30 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+#------------- Carga de estilos -------------
+def load_css():
+    with open("assets/styles.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+        
+load_css()
+
+st.sidebar.markdown(
+    """
+    <div class="sidebar-header">
+        🚴 TIENDA BIKE STORE
+    </div>
+
+    <div class="sidebar-subtitle">
+        Módulo Creativo
+    </div>
+
+    <hr class="sidebar-divider">
+    """,
+    unsafe_allow_html=True
+)
+st.sidebar.title("Acceso")
+
+
 # Aviso de seguridad para los usuarios:
 st.info(
     "Seguridad de la información: "
@@ -47,8 +71,6 @@ if "last_role" not in st.session_state:
     st.session_state.last_role = None
 
 
-
-st.sidebar.title("Acceso")
 
 # _____________________________
 # Condiciones de seguridad y privacidad
