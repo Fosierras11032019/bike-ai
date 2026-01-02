@@ -53,3 +53,59 @@ section[data-testid="stSidebar"] button:hover {
 section[data-testid="stSidebar"] hr {
     border-color: #d1d5db !important;
 }
+
+/* ================================
+   Sidebar - Controles de acceso
+================================ */
+
+/* Fondo general del sidebar */
+section[data-testid="stSidebar"] {
+    background-color: #F8FAFC !important;
+}
+
+/* -------- SELECT (Rol) -------- */
+
+/* Contenedor del selectbox */
+section[data-testid="stSidebar"] div[data-baseweb="select"] {
+    background-color: #FFFFFF !important;
+    border-radius: 8px;
+    border: 1px solid #C9D6DF;
+}
+
+/* Texto seleccionado */
+section[data-testid="stSidebar"] div[data-baseweb="select"] span {
+    color: #0D3B66 !important;
+    font-weight: 600;
+}
+
+/* Flecha del select */
+section[data-testid="stSidebar"] svg {
+    color: #0D3B66 !important;
+}
+
+/* -------- BOTONES -------- */
+
+/* Botón Ingresar / Salir */
+section[data-testid="stSidebar"] button {
+    background-color: #0D3B66 !important;
+    color: #FFFFFF !important;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 0.6em 1em;
+    border: none;
+}
+
+/* Hover botones */
+section[data-testid="stSidebar"] button:hover {
+    background-color: #144E8C !important;
+    color: #FFFFFF !important;
+}
+
+/* -------- TEXTO GENERAL -------- */
+
+/* Labels y textos */
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] span {
+    color: #1F2933 !important;
+}
