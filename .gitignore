@@ -1,0 +1,42 @@
+# Entornos virtuales
+.venv/
+venv/
+env/
+/venv/
+
+#Variables de entorno
+.env
+.env.*
+
+#Archivos Python
+__pycache__/
+*.pyc
+*.Pyo
+*.pyd
+
+#Archivos de datos sensibles
+data/*.json
+
+#Archivos temporales
+*.log
+*.tmp
+
+#Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+#Otros archivos
+
+utils/gen_FERNET_KEY.py
+disponibles.py
+test_*.py
+__init__.py
+
+#Cache de librerías
+.cache/
