@@ -16,6 +16,7 @@ __pycache__/
 
 #Archivos de datos sensibles
 data/*.json
+!data/.gitkeep
 
 #Archivos temporales
 *.log
