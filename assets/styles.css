@@ -1,26 +1,55 @@
-/* ================================
-   Identidad de la tienda
-================================ */
+/* =========================================================
+   FORZAR TEMA CLARO EN STREAMLIT CLOUD (SIDEBAR)
+========================================================= */
 
-.sidebar-header {
-    font-family: "Arial Black", Helvetica, sans-serif;
-    font-size: 22px;
-    font-weight: 900;
-    color: #0D3B66;
-    line-height: 1.2;
-    margin-bottom: 4px;
+/* Sidebar completo */
+section[data-testid="stSidebar"] {
+    background-color: #f5f7fa !important;
+    border-right: 1px solid #e0e0e0;
 }
 
-.sidebar-subtitle {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
+/* Texto general del sidebar */
+section[data-testid="stSidebar"] * {
+    color: #111827 !important;
+}
+
+/* Títulos */
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3 {
+    color: #0D3B66 !important;
+}
+
+/* Labels (selectbox, radio, inputs) */
+section[data-testid="stSidebar"] label {
     font-weight: 600;
-    color: #3A86FF;
-    margin-bottom: 16px;
+    color: #ffffff !important;
 }
 
-.sidebar-divider {
-    margin: 8px 0 12px 0;
+/* Selects e inputs */
+section[data-testid="stSidebar"] select,
+section[data-testid="stSidebar"] input,
+section[data-testid="stSidebar"] textarea {
+    background-color: #ffffff !important;
+    color: #111827 !important;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+}
+
+/* Botones */
+section[data-testid="stSidebar"] button {
+    background-color: #0D3B66 !important;
+    color: #ffffff !important;
+    font-weight: 700;    
+    border-radius: 8px;
     border: none;
-    border-top: 1px solid #ddd;
+}
+
+section[data-testid="stSidebar"] button:hover {
+    background-color: #1d4ed8 !important;
+}
+
+/* Separadores */
+section[data-testid="stSidebar"] hr {
+    border-color: #d1d5db !important;
 }
