@@ -37,7 +37,6 @@ desktop.ini
 utils/gen_FERNET_KEY.py
 disponibles.py
 test_*.py
-__init__.py
 
 #Cache de librerías
 .cache/

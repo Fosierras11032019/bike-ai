@@ -1,7 +1,7 @@
 streamlit==1.32.2       # Interfaz web
-Pillow>=10.0.0          # Manejo de imágenes
-requests>=2.31.0
+Pillow==10.1.0          # Manejo de imágenes
+requests==2.31.0
 google-genai>=0.3.0
-cryptography>=42.0.5    #Versión estable y compatible con Fernet y Python 3.10 y 3.11
-python-dotenv>=1.0.1    #Manejo de variables de entorno
+cryptography==42.0.5    #Versión estable y compatible con Fernet y Python 3.10 y 3.11
+python-dotenv==1.0.1    #Manejo de variables de entorno
 
