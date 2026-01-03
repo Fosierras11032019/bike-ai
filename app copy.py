@@ -1,16 +1,11 @@
 import streamlit as st
-
 from services.image_generator import generate_image
 from services.text_editor import improve_text
 from services.moderation import moderate_content
-
 from utils.image_gallery import prepare_image_for_gallery
 from utils.text_history import save_version, load_history
 from utils.session_utils import clear_session, clear_temp_files
 from auth.roles import get_permissions
-from utils.domain_validator import is_request_in_store_domain
-
-
 
 # ================================
 # Configuración de página
@@ -134,33 +129,49 @@ if option == "Edición de texto":
 
     action = st.selectbox(
         "Acción",
-        ["Mejorar", "Resumir", "Expandir", "Corregir", "Variar"],
-        key="text_action"
+        ["Mejorar", "Resumir", "Expandir", "Corregir", "Variar"]
     )
 
     if st.button("Procesar texto", key="btn_procesar_texto"):
-        
-        # 2️⃣ Moderación de contenido
+
+        # 1️⃣ Validación de dominio semántico
+        is_valid, validation_msg = is_text_within_store_domain(text)
+        if not is_valid:
+            st.warning(validation_msg)
+            st.stop()
+
+        # 2️⃣ Moderación del texto del usuario (ética / lenguaje)
         is_ok, msg = moderate_content(text)
         if not is_ok:
-            st.error(msg)
-            st.stop()
-        else:
-
-            # 3️⃣ Generación de texto
-            result = improve_text(text, action)
-            save_version(
-                st.session_state.user_role,
-                action,
-                text,
-                result
+            st.error(
+                "El texto contiene lenguaje inapropiado, agresivo o discriminatorio.\n\n"
+                f"Detalle: {msg}"
             )
-            st.success("Resultado")
-            st.write(result)
+            st.stop()
 
-    # ================================
-    # HISTORIAL
-    # ================================
+        # 3️⃣ Generación del texto
+        result = improve_text(text, action)
+
+        # 4️⃣ Moderación del texto generado (MUY IMPORTANTE)
+        is_ok_out, msg_out = moderate_content(result)
+        if not is_ok_out:
+            st.error(
+                "El contenido generado fue bloqueado por razones éticas.\n\n"
+                "Intenta reformular el texto inicial."
+            )
+            st.stop()
+
+        # 5️⃣ Guardar versión segura
+        save_version(
+            st.session_state.user_role,
+            action,
+            text,
+            result
+        )
+
+        st.success("Resultado")
+        st.write(result)
+
     st.divider()
     st.subheader("Historial de versiones")
 
@@ -171,20 +182,14 @@ if option == "Edición de texto":
             with st.expander(f"{item['timestamp']} | {item['action']}"):
                 st.markdown("**Texto original:**")
                 st.write(item["original_text"])
-
                 st.markdown("**Resultado:**")
                 st.write(item["result_text"])
 
-                if st.button(
-                    "Revertir esta versión",
-                    key=f"revert_{idx}"
-                ):
+                if st.button("Revertir", key=f"revert_{idx}"):
                     st.session_state.pending_text = item["result_text"]
                     st.rerun()
     else:
         st.info("No hay versiones previas.")
-
-        
 
 # ================================
 # GENERACIÓN DE IMÁGENES
@@ -207,33 +212,16 @@ elif option == "Generación de imágenes":
     if not is_ok:
         st.error(msg)
     elif st.button("Generar imagen") and not st.session_state.image_generated:
-        if not is_request_in_store_domain(prompt):
-            st.warning(
-                "Esta petición no está al alcance de este aplicativo.\n\n"
-                "Por favor solicite **elementos que se vendan en la tienda Bike Store** "
-                "(bicicletas, partes, accesorios o ropa de ciclismo)."
-            )
-            st.info(
-                " Este módulo está diseñado exclusivamente para apoyar "
-                "la creación de material visual de productos comercializados "
-                "por Bike Store."
-            )
+        image = generate_image(prompt, style)
+        img_buffer = prepare_image_for_gallery(image)
 
-        else:
-            image = generate_image(prompt, style)
+        st.session_state.gallery.append({
+            "image": img_buffer,
+            "label": prompt
+        })
 
-            if image is None:
-                st.error(
-                    " No se pudo generar la imagen. "
-                    "Intenta reformular la solicitud."
-                )
-            else:
-                img_buffer = prepare_image_for_gallery(image)
-                st.session_state.gallery.append({
-                    "image": img_buffer,
-                    "label": prompt
-                })
-                st.success("Imagen generada y agregada a la galería")
+        st.session_state.image_generated = True
+        st.success("Imagen generada y agregada a la galería")
 
     if st.session_state.gallery:
         st.subheader("Galería")

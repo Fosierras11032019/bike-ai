@@ -1,111 +1,78 @@
 /* =========================================================
-   FORZAR TEMA CLARO EN STREAMLIT CLOUD (SIDEBAR)
+   SIDEBAR – TEMA CLARO CORREGIDO
 ========================================================= */
 
-/* Sidebar completo */
 section[data-testid="stSidebar"] {
-    background-color: #f5f7fa !important;
-    border-right: 1px solid #e0e0e0;
+    background-color: #F8FAFC !important;
+    border-right: 1px solid #E5E7EB;
 }
 
-/* Texto general del sidebar */
+/* Texto general */
 section[data-testid="stSidebar"] * {
-    color: #111827 !important;
-}
-
-/* Títulos */
-section[data-testid="stSidebar"] h1,
-section[data-testid="stSidebar"] h2,
-section[data-testid="stSidebar"] h3 {
-    color: #0D3B66 !important;
-}
-
-/* Labels (selectbox, radio, inputs) */
-section[data-testid="stSidebar"] label {
-    font-weight: 600;
-    color: #ffffff !important;
-}
-
-/* Selects e inputs */
-section[data-testid="stSidebar"] select,
-section[data-testid="stSidebar"] input,
-section[data-testid="stSidebar"] textarea {
-    background-color: #ffffff !important;
-    color: #111827 !important;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-}
-
-/* Botones */
-section[data-testid="stSidebar"] button {
-    background-color: #0D3B66 !important;
-    color: #ffffff !important;
-    font-weight: 700;    
-    border-radius: 8px;
-    border: none;
-}
-
-section[data-testid="stSidebar"] button:hover {
-    background-color: #1d4ed8 !important;
-}
-
-/* Separadores */
-section[data-testid="stSidebar"] hr {
-    border-color: #d1d5db !important;
+    color: #1F2933 !important;
 }
 
 /* ================================
-   Sidebar - Controles de acceso
+   IDENTIDAD TIENDA
+================================ */
+.sidebar-header {
+    font-family: "Arial Black", Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: #0D3B66;
+}
+
+.sidebar-subtitle {
+    font-size: 15px;
+    font-weight: 700;
+    color: #2563EB;
+    margin-bottom: 12px;
+}
+
+/* ================================
+   BOTONES (Ingresar / Salir)
+   👉 Fondo claro + texto oscuro
+================================ */
+section[data-testid="stSidebar"] button {
+    background-color: #E3F2FD !important; /* azul claro */
+    color: #0D3B66 !important;            /* texto oscuro */
+    font-weight: 800;
+    border-radius: 8px;
+    border: 1px solid #90CAF9;
+    padding: 0.6em 1em;
+}
+
+section[data-testid="stSidebar"] button:hover {
+    background-color: #BBDEFB !important;
+    color: #0D3B66 !important;
+}
+
+/* ================================
+   EXPANDERS – eliminar texto keyboard_*
 ================================ */
 
-/* Fondo general del sidebar */
-section[data-testid="stSidebar"] {
-    background-color: #F8FAFC !important;
+/* Oculta texto alternativo de iconos Material */
+section[data-testid="stSidebar"] span.material-icons,
+section[data-testid="stSidebar"] span[class*="material"] {
+    display: none !important;
 }
 
-/* -------- SELECT (Rol) -------- */
+/* Flecha real del expander */
+section[data-testid="stSidebar"] svg {
+    color: #0D3B66 !important;
+    visibility: visible !important;
+}
 
-/* Contenedor del selectbox */
+/* ================================
+   SELECTBOX (ROL)
+================================ */
 section[data-testid="stSidebar"] div[data-baseweb="select"] {
     background-color: #FFFFFF !important;
+    border: 1px solid #CBD5E1;
     border-radius: 8px;
-    border: 1px solid #C9D6DF;
 }
 
-/* Texto seleccionado */
 section[data-testid="stSidebar"] div[data-baseweb="select"] span {
     color: #0D3B66 !important;
     font-weight: 600;
-}
-
-/* Flecha del select */
-section[data-testid="stSidebar"] svg {
-    color: #0D3B66 !important;
-}
-
-/* -------- BOTONES -------- */
-
-/* Botón Ingresar / Salir */
-section[data-testid="stSidebar"] button {
-    background-color: #0D3B66 !important;
-    color: #FFFFFF !important;
-    font-weight: 700;
-    border-radius: 8px;
-    padding: 0.6em 1em;
-    border: none;
-}
-
-/* Hover botones */
-section[data-testid="stSidebar"] button:hover {
-    background-color: #144E8C !important;
-    color: #FFFFFF !important;
-}
-
-/* -------- TEXTO GENERAL -------- */
-
-/* Labels y textos */
-section[data-testid="stSidebar"] label,
-section[data-testid="stSidebar"] p,
-section[data-testid="stSidebar"] span {
-    color: #1F2933 !important;
 }
