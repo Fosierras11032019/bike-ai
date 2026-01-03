@@ -88,7 +88,7 @@ with st.sidebar:
 # CONTENIDO PRINCIPAL
 # ================================
 st.title("BikeCreative AI")
-st.caption("IA Generativa para Marketing de Bicicletas")
+st.caption("IA Generativa para Marketing de Bicicletas, by Freddy Sierra Silva.")
 
 if not st.session_state.logged_in:
     st.info("Por favor, inicia sesión desde el menú lateral.")
